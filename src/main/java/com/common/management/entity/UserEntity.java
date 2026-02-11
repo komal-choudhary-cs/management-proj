@@ -6,7 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
+
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -35,7 +35,7 @@ public class UserEntity {
 	
 	@Column(name = "status")
 	private String status;
-//
+
 //	@OneToMany(mappedBy = "user" , cascade = CascadeType.All) // without it addresee exist in memory only
 //	private List<UserAddressEntity> userAddresses;
 
