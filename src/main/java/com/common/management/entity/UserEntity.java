@@ -40,7 +40,7 @@ public class UserEntity {
 	@Column(name = "status")
 	private String status;
 
-	@OneToMany(mappedBy = "user") // without it addresee exist in memory only
-	private List<UserAddressEntity> userAddresses;
+//	@OneToMany(mappedBy = "user" , cascade = CascadeType.All) // without it addresee exist in memory only
+//	private List<UserAddressEntity> userAddresses;
 
 }

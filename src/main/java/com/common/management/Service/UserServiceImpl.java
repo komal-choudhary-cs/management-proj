@@ -41,9 +41,11 @@ public class UserServiceImpl implements UserService {
 		userDto.setLastName(users.getLastName());
 		userDto.setEmail(users.getEmail());
 		userDto.setStatus(users.getStatus());
-		if (users.getUserAddresses() != null) {
-			List<UserAddressDto> addressDto = new ArrayList<>();
-			for (UserAddressEntity address : users.getUserAddresses()) {
+//		if (users.getUserAddresses() != null) {
+			List<UserAddressEntity> addresses = addressRepository.findByUserId(users.getId());
+			if (!addresses.isEmpty()) {
+		        List<UserAddressDto> addressDtos = new ArrayList<>();
+			for (UserAddressEntity address : addresses) {
 				UserAddressDto userAddressDto = new UserAddressDto();
 				userAddressDto.setId(address.getId());
 				userAddressDto.setCity(address.getCity());
@@ -51,10 +53,11 @@ public class UserServiceImpl implements UserService {
 				userAddressDto.setPincode(address.getPincode());
 				userAddressDto.setState(address.getState());
 				userAddressDto.setStreetNumber(address.getStreetNumber());
-				addressDto.add(userAddressDto);
-			}
-			userDto.setAddresses(addressDto);
-		}
+				//addressDto.add(userAddressDto);
+				addressDtos.add(userAddressDto);
+
+			userDto.setAddresses(addressDtos);
+		}}
 		return userDto;
 	}
 
@@ -85,7 +88,7 @@ public class UserServiceImpl implements UserService {
 				}
                 addressRepository.saveAll(addresses);
 			}
-			user.setUserAddresses(addresses);
+//			user.setUserAddresses(addresses);
 			UserEntity savedUser = userRepository.save(user);
 			Thread myemailThread = new Thread(
 					new LoginEmailtask(emailService, savedUser.getEmail(), savedUser.getFirstName()));
@@ -150,46 +153,3 @@ public class UserServiceImpl implements UserService {
 	}
 
 }
-//@Override
-//public UserDto createUser(CreateUserDto createUserDtos) {
-//
-//	userValidation.validateCreateUser(createUserDtos);
-//
-//	UserEntity user = new UserEntity();
-//	user.setFirstName(createUserDtos.getFirstName());
-//	user.setLastName(createUserDtos.getLastName());
-//	user.setEmail(createUserDtos.getEmail());
-//	user.setStatus("ACTIVE");
-//
-//	List<UserAddressEntity> addresses = new ArrayList<>();
-//	if (createUserDtos.getAddresses() != null && !createUserDtos.getAddresses().isEmpty()) {
-//
-//		for (UserAddressDto addressdto : createUserDtos.getAddresses()) {
-//			addressValidation.validate(addressdto);
-//			UserAddressEntity address = new UserAddressEntity();
-//			address.setId(addressdto.getId());
-//
-//			address.setCity(addressdto.getCity());
-//			address.setHouseNumber(addressdto.getHouseNumber());
-//			address.setPincode(addressdto.getPincode());
-//			address.setState(addressdto.getState());
-//			address.setStreetNumber(addressdto.getStreetNumber());
-//
-//			address.setUser(user);
-//
-//			addresses.add(address);
-//		}
-//
-//	}
-//	user.setUserAddresses(addresses);
-//
-//	UserEntity savedUser = userRepository.save(user);
-//// here pass the runnable thread constructor here.
-//	
-//	Thread myemailThread = new Thread(
-//			new LoginEmailtask(emailService, savedUser.getEmail(), savedUser.getFirstName()));
-//	myemailThread.start();
-//
-//	return userToDto(savedUser);
-//
-//}

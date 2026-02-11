@@ -1,5 +1,6 @@
 package com.common.management.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Getter;
@@ -13,6 +14,6 @@ public class CreateUserDto {
 	private String firstName;
 	private String lastName;
 	private String email;
-	private List<UserAddressDto> addresses;
+	private List<UserAddressDto> addresses = new ArrayList<>();
 
 }

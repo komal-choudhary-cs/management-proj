@@ -36,7 +36,7 @@ public class OrderItemEntity {
 	private Integer quantity;
 	private Double price;
 
-	public void setOrder(OrderEntity order) {
-		this.order = order;
-	}
+//	public void setOrder(OrderEntity order) {
+//		this.order = order;
+//	}
 }
