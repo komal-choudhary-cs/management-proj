@@ -1,10 +1,6 @@
 package com.common.management.entity;
 
-import java.util.List;
 
-import com.common.management.dto.UserAddressDto;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
