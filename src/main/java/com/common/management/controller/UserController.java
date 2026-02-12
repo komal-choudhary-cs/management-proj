@@ -76,11 +76,4 @@ public class UserController {
 
 }
 
-//List<UserDto> users = service.GetUserByStatus(status);
-//
-//UserResponseDto response = new UserResponseDto();
-//response.setUsers(users);
-// @GetMapping("/getAllUsers")
-//public List< UserDto> getAllUsers() {
-//	return service. getAllUsers();
-//}
+
