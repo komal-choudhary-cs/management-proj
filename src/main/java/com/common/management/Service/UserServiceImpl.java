@@ -71,8 +71,7 @@ public class UserServiceImpl implements UserService {
 			user.setLastName(createUserDto.getLastName());
 			user.setEmail(createUserDto.getEmail());
 			user.setStatus("ACTIVE");
-			// UserEntity savedUser = userRepository.save(user);
-			// List<UserAddressEntity> addresses = addressRepository.saveAll(addresses);
+			
 			List<UserAddressEntity> addresses = new ArrayList<>();
 			if (createUserDto.getAddresses() != null && !createUserDto.getAddresses().isEmpty()) {
 				for (UserAddressDto addressDto : createUserDto.getAddresses()) {
