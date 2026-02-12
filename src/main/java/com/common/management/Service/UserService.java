@@ -22,7 +22,7 @@ List<UserDto> GetUserByStatus(String status , Pageable pageable);
 
 
 	List<UserEntity> getUsersWithLimitOffset(int pageNo, int pageSize);
-//	UserDto createUsers(List<CreateUserDto> createuserdto);
+
 	List<UserDto> createUsers(List<CreateUserDto> createUserDtos);
 	
 
